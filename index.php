@@ -1,5 +1,10 @@
+<?php
+header('Content-Type: text/html; charset=UTF-8');
+?>
+<!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>CD Library</title>
 </head>
 
@@ -7,6 +12,14 @@
 	<h3>Home</h3>
 	<hr>
 
+	<div>
+		<a href="querie1.php">Harpsichord</a><br>
+		<a href="querie2.php">Available Concertos</a><br>
+		<a href="querie3.php">Recording of BWV 780</a><br>
+		<a href="querie4.php">Glenn Gould recordings</a><br>
+		<a href="querie5.php">Recordings of the same piece</a><br>
+		<a href="querie6.php">Compositions with F# minor</a><br>
+	</div>
 
 <?php
 
@@ -32,12 +45,80 @@
 		echo "</tr>";
 		while($row = mysqli_fetch_assoc($result)){
 			echo "<tr>";
-			// echo "<td>". $row["performer"] ."</td>";
-			echo "<td>". $performer ."</td>";
-			echo "<td>". $row["cd_title"] ."</td>";
-			echo "<td>". $row["new_cd_id"] ."</td>";
-			echo "<td>". $row["cd_lable"] ."</td>";
-			echo "<td>". $row["time"] . "</td>";
+			echo "<td>". $row["Performer"] ."</td>";
+			echo "<td>". $row["CD_Title"] ."</td>";
+			echo "<td>". $row["New_CD_ID"] ."</td>";
+			echo "<td>". $row["CD_Lable"] ."</td>";
+			echo "<td>". $row["Time"] . "</td>";
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	else{
+		echo "Error";
+	}	
+
+	$sql = "SELECT * FROM Composition";
+	$result = mysqli_query($db, $sql);
+
+	if(mysqli_num_rows($result) > 0){
+		echo "<table border = '1'>";
+		echo "<tr>";
+		echo "<th>Composition_Name</th>";
+		echo "<th>BWV_Num</th>";
+		echo "<th>New_CD_ID</th>";
+		echo "</tr>";
+		while($row = mysqli_fetch_assoc($result)){
+			echo "<tr>";
+			echo "<td>". $row["Composition_Name"] ."</td>";
+			echo "<td>". $row["BWV_Num"] ."</td>";
+			echo "<td>". $row["New_CD_ID"] ."</td>";
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	else{
+		echo "Error";
+	}	
+
+	$sql = "SELECT * FROM Orchestra";
+	$result = mysqli_query($db, $sql);
+
+	if(mysqli_num_rows($result) > 0){
+		echo "<table border = '1'>";
+		echo "<tr>";
+		echo "<th>Orchestra</th>";
+		echo "<th>Conductor</th>";
+		echo "<th>New_CD_ID</th>";
+		echo "</tr>";
+		while($row = mysqli_fetch_assoc($result)){
+			echo "<tr>";
+			echo "<td>". $row["Orchestra"] ."</td>";
+			echo "<td>". $row["Conductor"] ."</td>";
+			echo "<td>". $row["New_CD_ID"] ."</td>";
+			echo "</tr>";
+		}
+		echo "</table>";
+	}
+	else{
+		echo "Error";
+	}	
+
+	$sql = "SELECT * FROM Tracks";
+	$result = mysqli_query($db, $sql);
+
+	if(mysqli_num_rows($result) > 0){
+		echo "<table border = '1'>";
+		echo "<tr>";
+		echo "<th>BWV_Num</th>";
+		echo "<th>Instruments</th>";
+		echo "<th>New_CD_ID</th>";
+		echo "</tr>";
+		while($row = mysqli_fetch_assoc($result)){
+			echo "<tr>";
+			echo "<td>". $row["BWV_Num"] ."</td>";
+			echo "<td>". $row["Instruments"] ."</td>";
+			echo "<td>". $row["New_CD_ID"] ."</td>";
 			echo "</tr>";
 		}
 		echo "</table>";
@@ -47,54 +128,9 @@
 	}	
 
 	mysqli_close($db);
-	
-	// /* Skriv din SQL-fr ga och spara den i en variabel */
-	// $query = "SELECT spid, sname, year FROM students";
-
-	// /* K r SQL-fr gan mot databasen och spara resultat-tabellen i en variabel */
-	// $result = mysqli_query($db,$query);
-
-    //     if(!$result)
-	// {
-	// echo("<P>Error performing query: </P>");
-	// }
-
-	// /* H r skriver jag ut antalet rader i resultat-tabellen */
-	// echo "<P>antal: " . mysqli_num_rows($result) . " studenter\n </P>";
-	
 ?>
 
-
-  <!-- <table border="1">
-    <tr>
-      <th bgcolor=#eeeeee style='width: 200px;'>StudentID</th>
-      <th bgcolor=#eeeedd style='width: 200px;'>Name</th>
-      <th bgcolor=#eeeeee style='width: 200px;'>Year</th>
-    </tr> -->
-
-
-<!-- <?php
-
-/* H mta en rad i taget fr n resultat-tabellen och l gg attributv rdena i variablerna 
-   $spid, $sname och $year. Skriv ut dessa samtidigt som du skapar en rad i en HTML-tabell */
-// while (list($spid, $sname, $year) = mysqli_fetch_row($result))
-// {
-//         echo "<tr>";
-// 	echo "<td bgcolor=#aaaaaa>" . $spid . "</td>";
-// 	echo "<td bgcolor=#aaaaaa>" . $sname . "</td>";
-// 	echo "<td bgcolor=#aaaaaa>" . $year . "</td>";
-//       echo "</tr>";
-// }
- 
- 
-//  //mysqli_close($db);
-
-?> -->
-
-  <!-- </table> -->
-
 <br><br>
-<a href="index.html">Home</a>
 </body>
 
 </html>
