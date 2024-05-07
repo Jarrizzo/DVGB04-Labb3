@@ -32,7 +32,8 @@
 		echo "</tr>";
 		while($row = mysqli_fetch_assoc($result)){
 			echo "<tr>";
-			echo "<td>". $row["performer"] ."</td>";
+			// echo "<td>". $row["performer"] ."</td>";
+			echo "<td>". $performer ."</td>";
 			echo "<td>". $row["cd_title"] ."</td>";
 			echo "<td>". $row["new_cd_id"] ."</td>";
 			echo "<td>". $row["cd_lable"] ."</td>";
