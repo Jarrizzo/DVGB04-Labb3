@@ -22,7 +22,7 @@ header('Content-Type: text/html; charset=UTF-8');
 	</div>
 
 	<h3>Search Compositions by Instrument</h3>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET">
+    <form action="instrumentSearch.php" method="POST">
         <label for="tmp">Instrument:</label>
         <input type="text" id="tmp" name="tmp">
         <button type="submit">Search</button>
@@ -35,7 +35,7 @@ header('Content-Type: text/html; charset=UTF-8');
 		echo("Could not connect to MySQL server!" . mysqli_connect_error());
 		}
 
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  /*   if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if (isset($_GET['tmp'])) {
             $tmp = $_GET['tmp'];
 			
@@ -47,15 +47,13 @@ header('Content-Type: text/html; charset=UTF-8');
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 
-			// $result = mysqli_query($db, $sql);
-
 			if(mysqli_num_rows($result) > 0){
 				echo "<table border = '1'>";
 				echo "<tr>";
 				echo "<th>Composition_Name</th>";					
 				echo "</tr>";
 				while($row = mysqli_fetch_assoc($result)){
-					echo "<tr>";
+						echo "<tr>";
 					echo "<td>". $row["Composition_Name"] ."</td>";
 					echo "</tr>";
 				}					
@@ -66,19 +64,18 @@ header('Content-Type: text/html; charset=UTF-8');
 			} 
 		}
 		
-    }
+    } */
     ?>
 
 <h3>Search Compositions by BWV Number</h3>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET">
+    <form action="BWVSearch.php" method="POST">
         <label for="temp">BWV Number:</label>
         <input type="text" id="temp" name="temp">
         <button type="submit">Search</button>
     </form>
 
-    <?php
-    // PHP code to handle form submission and display search results
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
+<?php
+/*     if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if (isset($_GET['temp'])) {
             $temp = $_GET['temp'];
 			
@@ -110,7 +107,7 @@ header('Content-Type: text/html; charset=UTF-8');
 			} 
 	
 		}
-    }
+    } */
     ?>
 
 <?php
