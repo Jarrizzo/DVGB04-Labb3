@@ -19,7 +19,7 @@
 
         if (isset($_POST['tmp'])) {
             $tmp = $_POST['tmp'];
-            echo "Search result for: " . $tmp. " ";   
+            echo "Search result for: " . $tmp. "";
 			$sql = "SELECT Composition.Composition_Name FROM Composition
 					JOIN Tracks ON Tracks.BWV_Num = Composition.BWV_Num
 					WHERE Tracks.Instrument = ?";

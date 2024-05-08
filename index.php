@@ -24,7 +24,7 @@ header('Content-Type: text/html; charset=UTF-8');
 	<h3>Search Compositions by Instrument</h3>
     <form action="instrumentSearch.php" method="POST">
         <label for="tmp">Instrument:</label>
-        <input type="text" id="tmp" name="tmp">
+        <input type="text" id="tmp" name="tmp"><br>
         <button type="submit">Search</button>
     </form>
 
@@ -70,7 +70,7 @@ header('Content-Type: text/html; charset=UTF-8');
 <h3>Search Compositions by BWV Number</h3>
     <form action="BWVSearch.php" method="POST">
         <label for="temp">BWV Number:</label>
-        <input type="text" id="temp" name="temp">
+        <input type="text" id="temp" name="temp" value="BWV 000" pattern="BWV \d{1,4}"><br>
         <button type="submit">Search</button>
     </form>
 

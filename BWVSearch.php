@@ -19,7 +19,8 @@
 
         if (isset($_POST['temp'])) {
             $temp = $_POST['temp'];
-            echo "Search result for: " . $temp. " ";   
+            echo "Search result for: " . $temp. "\n";
+            echo "\n";      
 			$sql = "SELECT Composition.Composition_Name FROM Composition
 					WHERE Composition.BWV_Num = ?";
     
