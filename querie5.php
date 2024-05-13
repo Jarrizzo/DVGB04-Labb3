@@ -13,7 +13,7 @@
 
 	/* Koppla upp till ditt konto p  servern och v lj databas */
 	
-    $db = mysqli_connect("localhost", "isaknils100", "Isakisak96", "isaknils100_Labb3" );
+	$db = mysqli_connect("localhost", "xxxXXX100", "PassWord", "xxxXXX100_Labb3" );
 
 	if(!$db){
           echo("Could not connect to MySQL server!" . mysqli_connect_error());
@@ -21,12 +21,12 @@
 
 
 	/* Skriv din SQL-fr ga och spara den i en variabel */
-	$query = "SELECT c.Composition_Name, t1.BWV_Num, COUNT(DISTINCT t2.Instrument) AS Num_Different_Instruments
-			  FROM Composition AS c
-			  INNER JOIN Tracks AS t1 ON c.BWV_Num = t1.BWV_Num
-			  LEFT JOIN Tracks AS t2 ON t1.BWV_Num = t2.BWV_Num
-			  GROUP BY c.Composition_Name, t1.BWV_Num
-			  HAVING COUNT(DISTINCT t2.Instrument) > 1 OR COUNT(DISTINCT t2.Instrument) = 1
+	$query = "SELECT DISTINCT Composition.Composition_Name, COUNT(DISTINCT CD.New_CD_ID) AS NUMBER_OF_RECORDINGS
+			  FROM CD
+			  JOIN Tracks ON CD.New_CD_ID = Tracks.New_CD_ID
+			  JOIN Composition ON Tracks.BWV_Num = Composition.BWV_Num
+			  GROUP BY Composition.New_CD_ID, Composition.Composition_Name
+			  ORDER BY NUMBER_OF_RECORDINGS DESC;
 			 ";
 
 	/* K r SQL-fr gan mot databasen och spara resultat-tabellen i en variabel */

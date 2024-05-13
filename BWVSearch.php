@@ -11,7 +11,7 @@
 
 <?php
 	
-    $db = mysqli_connect("localhost", "isaknils100", "Isakisak96", "isaknils100_Labb3" );
+	$db = mysqli_connect("localhost", "xxxXXX100", "PassWord", "xxxXXX100_Labb3" );
 
     if(!$db){
         echo("Could not connect to MySQL server!" . mysqli_connect_error());
