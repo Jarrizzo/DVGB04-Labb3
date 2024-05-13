@@ -21,7 +21,8 @@
             $temp = $_POST['temp'];
             echo "Search result for: " . $temp. "\n";
             echo "\n";      
-			$sql = "SELECT Composition.Composition_Name FROM Composition
+			$sql = "SELECT Composition.Composition_Name,Tracks.BWV_Num,Tracks.New_CD_ID FROM Composition
+                    JOIN Tracks ON Composition.BWV_Num = Tracks.BWV_Num
 					WHERE Composition.BWV_Num = ?";
     
             $stmt = mysqli_prepare($db, $sql);
@@ -32,11 +33,15 @@
             if(mysqli_num_rows($result) > 0){
                 echo "<table border = '1'>";
                 echo "<tr>";
-                echo "<th>Composition_Name</th>";					
+                echo "<th>Composition_Name</th>";	
+                echo "<th>BWV_Num</th>";					
+                echo "<th>New_CD_ID</th>";				
                 echo "</tr>";
                 while($row = mysqli_fetch_assoc($result)){
                         echo "<tr>";
                     echo "<td>". $row["Composition_Name"] ."</td>";
+                    echo "<td>". $row["BWV_Num"] ."</td>";
+                    echo "<td>". $row["New_CD_ID"] ."</td>";
                     echo "</tr>";
                 }					
                 echo "</table>";

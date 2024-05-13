@@ -35,36 +35,6 @@ header('Content-Type: text/html; charset=UTF-8');
 		echo("Could not connect to MySQL server!" . mysqli_connect_error());
 		}
 
-  /*   if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        if (isset($_GET['tmp'])) {
-            $tmp = $_GET['tmp'];
-			
-			$sql = "SELECT Composition.Composition_Name FROM Composition
-					WHERE Composition.BWV_Num = ?";
-
-			$stmt = mysqli_prepare($db, $sql);
-			mysqli_stmt_bind_param($stmt,"s", $tmp);
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
-
-			if(mysqli_num_rows($result) > 0){
-				echo "<table border = '1'>";
-				echo "<tr>";
-				echo "<th>Composition_Name</th>";					
-				echo "</tr>";
-				while($row = mysqli_fetch_assoc($result)){
-						echo "<tr>";
-					echo "<td>". $row["Composition_Name"] ."</td>";
-					echo "</tr>";
-				}					
-				echo "</table>";
-				}
-			else{
-				echo "Error";
-			} 
-		}
-		
-    } */
     ?>
 
 <h3>Search Compositions by BWV Number</h3>
@@ -75,39 +45,7 @@ header('Content-Type: text/html; charset=UTF-8');
     </form>
 
 <?php
-/*     if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        if (isset($_GET['temp'])) {
-            $temp = $_GET['temp'];
-			
-			$sql = "SELECT Composition.Composition_Name FROM Composition
-					JOIN Tracks ON Tracks.BWV_Num = Composition.BWV_Num
-					WHERE Tracks.Instrument = ?";
 
-			$stmt = mysqli_prepare($db, $sql);
-			mysqli_stmt_bind_param($stmt,"s", $temp);
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
-
-			// $result = mysqli_query($db, $sql);
-
-			if(mysqli_num_rows($result) > 0){
-				echo "<table border = '1'>";
-				echo "<tr>";
-				echo "<th>Composition_Name</th>";					
-				echo "</tr>";
-				while($row = mysqli_fetch_assoc($result)){
-					echo "<tr>";
-					echo "<td>". $row["Composition_Name"] ."</td>";
-					echo "</tr>";
-				}					
-				echo "</table>";
-			}
-			else{
-				echo "Error";
-			} 
-	
-		}
-    } */
     ?>
 
 <?php
@@ -200,13 +138,13 @@ header('Content-Type: text/html; charset=UTF-8');
 		echo "<table border = '1'>";
 		echo "<tr>";
 		echo "<th>BWV_Num</th>";
-		echo "<th>Instruments</th>";
+		echo "<th>Instrument</th>";
 		echo "<th>New_CD_ID</th>";
 		echo "</tr>";
 		while($row = mysqli_fetch_assoc($result)){
 			echo "<tr>";
 			echo "<td>". $row["BWV_Num"] ."</td>";
-			echo "<td>". $row["Instruments"] ."</td>";
+			echo "<td>". $row["Instrument"] ."</td>";
 			echo "<td>". $row["New_CD_ID"] ."</td>";
 			echo "</tr>";
 		}
