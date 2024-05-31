@@ -19,10 +19,11 @@
 
         if (isset($_POST['tmp'])) {
             $tmp = $_POST['tmp'];
-            echo "Search result for: " . $tmp. "";
+            echo "Search result for: " . $tmp. "\n";
+            $tmp = "%" . $tmp . "%";
 			$sql = "SELECT Composition.Composition_Name,Tracks.BWV_Num,Tracks.New_CD_ID FROM Composition
 					JOIN Tracks ON Tracks.BWV_Num = Composition.BWV_Num
-					WHERE Tracks.Instrument = ?";
+					WHERE Tracks.Instrument Like ?";
     
             $stmt = mysqli_prepare($db, $sql);
             mysqli_stmt_bind_param($stmt,"s", $tmp);

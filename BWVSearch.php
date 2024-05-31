@@ -20,7 +20,8 @@
         if (isset($_POST['temp'])) {
             $temp = $_POST['temp'];
             echo "Search result for: " . $temp. "\n";
-            echo "\n";      
+            echo "\n";    
+            
 			$sql = "SELECT Composition.Composition_Name,Tracks.BWV_Num,Tracks.New_CD_ID FROM Composition
                     JOIN Tracks ON Composition.BWV_Num = Tracks.BWV_Num
 					WHERE Composition.BWV_Num = ?";
